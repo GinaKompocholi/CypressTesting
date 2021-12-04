@@ -30,11 +30,7 @@ class CheckboxComponent{
 
     public checkboxIsUnChecked(dropdownLocator: number | Cypress.Chainable){
         this.getCheckboxElement(dropdownLocator).should('not.be.checked')
-    }
-
-
-
-    
+    }    
 }
 
 export default CheckboxComponent

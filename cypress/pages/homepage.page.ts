@@ -25,6 +25,10 @@ class Homepage {
         return this.headerElement(header).invoke('text')
     }
 
+    public headerTextShouldEqual(header: string, headerText: string){
+        this.headerText(header).should('equal', headerText);
+    }
+
     public getListItems(){
         return cy.get(`${Homepage.pageListElements}`);
     }
@@ -41,6 +45,9 @@ class Homepage {
         return this.footerElement().invoke('text')
     }
 
+    public footerTextShouldEqual(footerText: string){
+        this.footerText().should('equal', footerText);
+    }
 // -------------------- CHECKBOX -----------------------------------
 
     // navigate to Checkbox page
@@ -52,7 +59,7 @@ class Homepage {
         this.checkboxSelection.validateLandingPage();
     }
 
-    // peirazei na exun to idio onoma?
+    // [4] peirazei na exun to idio onoma?
     public validateCheckboxOptionsNotDisabled(){
         this.checkboxSelection.validateCheckboxOptionsNotDisabled();
     }

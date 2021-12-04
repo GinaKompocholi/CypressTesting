@@ -17,18 +17,28 @@ describe('Navigate to HeroKuapp Homepage', () => {
     it('WHEN landing in Homepage: THEN correct headers are displayed', () => {
       landingPageE.headerText('h1').should('equal', h1Text);
       landingPageE.headerText('h2').should('equal', h2Text);
+
+      // [1] auto dn einai pio swsto? 
+      landingPageE.headerTextShouldEqual('h1', h1Text);
+      landingPageE.headerTextShouldEqual('h2', h2Text);
     });
 
     it('WHEN landing in Homepage: THEN expected amount of list items are displayed', () => {
       landingPageE.getListItems().should('have.length', 44)
-      //why does this not work?
+      // [2] why does this not work?
       //landingPageE.getListItems().should('have.length', landingPageE.getTotalExpectedListElements)
     })
 
+    // [3] dn einai pio swsto na kalesoume katheutheian func apo tin homePage.Page.ts 
+    // kai na min exume locators mesa se auto to file?  
     it('WHEN landing in Homepage: THEN footer is attached in page with expected wordings ', () => {
-      cy.get('[id="page-footer"] div div').invoke('text')
-      landingPageE.footerText().should('equal', footerText);
+      landingPageE.footerTextShouldEqual(footerText);   
     });
+
+    it('WHEN selecting checkbox list element: THEN checkbox href works well - redirects to checkbox page', () => {
+      landingPageE.selectCheckboxHref();
+    });
+
   }),
 
 describe('Testing Checkboxes section in HeroKuapp', () => {
@@ -39,11 +49,6 @@ describe('Testing Checkboxes section in HeroKuapp', () => {
   })
 
     const landingPageE = new Homepage();
-
-    it('WHEN selecting checkbox list element: THEN checkbox href works well - redirects to checkbox page', () => {
-      landingPageE.selectCheckboxHref();
-    });
-
 
     it('WHEN landing in checkbox page THEN landing page is as expected', () => {
       landingPageE.validateLandingInCheckboxPage();
@@ -56,9 +61,8 @@ describe('Testing Checkboxes section in HeroKuapp', () => {
       landingPageE.checkCheckboxOption(1);
       landingPageE.validateCorrectCheckboxGotChecked(1);
     });
-    
 
-    it.only('WHEN unchecking all checked checkbox elements: THEN checkbox elements are unchecked', () => {
+    it('WHEN unchecking all checked checkbox elements: THEN checkbox elements are unchecked', () => {
       landingPageE.uncheckAllCheckboxes();
       landingPageE.allcheckboxesAreUnChecked();
     });
