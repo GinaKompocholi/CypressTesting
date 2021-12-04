@@ -8,10 +8,14 @@ class Homepage {
     private static pagefooter = '#page-footer';
     private static totalExpectedListElements: number = 44;
 
-
-    public static checkboxElement = '[href="/checkboxes"]'
+    private static checkboxElement = '[href="/checkboxes"]'
     public checkboxHrefSelection: HrefSelectionComponent;
     public checkboxSelection: DropdownComponent;
+
+    constructor(){
+        this.checkboxHrefSelection = new HrefSelectionComponent;
+        this.checkboxSelection = new DropdownComponent;
+    }
 
     public headerElement(header:string){
         return cy.get(`${Homepage.pageID} ${header}`);       
@@ -37,18 +41,40 @@ class Homepage {
         return this.footerElement().invoke('text')
     }
 
-// --------------------------------------------------------
+// -------------------- CHECKBOX -----------------------------------
 
+    // navigate to Checkbox page
     public selectCheckboxHref(){
-        cy.get(`${Homepage.checkboxElement}`).click()
-        // why is it not working?
-        //return this.checkboxHrefSelection.selectHrefElement(Homepage.checkboxElement);
+        this.checkboxHrefSelection.selectHrefElement(Homepage.checkboxElement);
     }    
 
-    public selectCheckboxOption(option: string){
-        //cy.get(`${Homepage.checkboxElement}`).click()
-        return this.checkboxSelection.checkDropdownElement(option)
+    public validateLandingInCheckboxPage(){
+        this.checkboxSelection.validateLandingPage();
+    }
+
+    // peirazei na exun to idio onoma?
+    public validateCheckboxOptionsNotDisabled(){
+        this.checkboxSelection.validateCheckboxOptionsNotDisabled();
+    }
+
+    public checkCheckboxOption(option: number){
+        this.checkboxSelection.checkCheckboxElement(option);
     }   
+
+    public validateCorrectCheckboxGotChecked(option: number){
+        this.checkboxSelection.checkboxIsChecked(option);
+    }
+
+    public uncheckAllCheckboxes(){
+        this.checkboxSelection.uncheckCheckbox(1);
+        this.checkboxSelection.uncheckCheckbox(3);
+    }
+
+
+    public allcheckboxesAreUnChecked(){
+        this.checkboxSelection.checkboxIsUnChecked(1);
+        this.checkboxSelection.checkboxIsUnChecked(3);
+    }
     
 }
 
