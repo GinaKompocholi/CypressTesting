@@ -49,6 +49,7 @@ class Homepage {
         //cy.get(`${Homepage.checkboxElement}`).click()
         return this.checkboxSelection.checkDropdownElement(option)
     }   
+    
 }
 
 export default Homepage;
