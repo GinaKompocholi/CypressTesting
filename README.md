@@ -1,5 +1,6 @@
 # Cypress
 
 Repo dedicated to cypress testing
-Testing scope -> website: https://the-internet.herokuapp.com/
+
+Scope of testing: Functionality and appearance of website: https://the-internet.herokuapp.com/
  
