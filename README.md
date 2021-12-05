@@ -48,7 +48,23 @@ $ tsc -init to creat tsconfig.json
 }
 ```
 
+[Install node]
+```command
+$ 
+```
 
+[Install cypress]
+```command
+$ npm -init y 
+$ npm install cypress
+```
 ----------------------------------------------
-|           Ιn order to execute tests        |
+|           Ιn order to execute tests         |
 ----------------------------------------------
+
+[Start cypress from IDE terminal]
+```command
+$ npx cypress open
+```
+
+
