@@ -7,32 +7,6 @@ describe('Actions', () => {
     cy.visit('https://the-internet.herokuapp.com/?fbclid=IwAR0B-K9BTs5ntuDVgxY6z1RRauR0LK5BVWbMi-82y5HnaxbADZbiN-MB0HU')
   })
 
-  it('Contains headlines', () => {
-    cy.contains('Welcome to the-internet Available Examples')
-    cy.get('h1').should('exist')
-    cy.get('h2').should('exist')
-  })
-
-  // ti kanei to focus??
-  it('Focus on headline', () => {
-    cy.get('h1').focus()
-    .should('have.class', 'focus')
-
-  })
-
-  const checkChapter = (chapter, partiaLink, id) =>{
-    cy.get(`:nth-child(${chapter}) > a`).click()
-    cy.url().should('contain', `/${partiaLink}`)
-    cy.get('h3').should('exist')
-    cy.get(`[id=${id}]`).should('exist')
-
-
-  }
-  it('Redirect link url works well', () => {
-    checkChapter(36, 'redirector', 'redirect')
-    cy.go('back')
-
-  })
 
   it.only('Dropdown test', () => {
     checkChapter(11, 'dropdown', 'dropdown')

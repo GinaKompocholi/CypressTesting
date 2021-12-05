@@ -1,5 +1,6 @@
 import HrefSelectionComponent from "./components/hrefSelection.component";
-import DropdownComponent from "./components/checkbox.component";
+import CheckboxComponent from "./components/checkbox.component";
+import DropdownComponent from "./components/dropdown.component"
 
 class Homepage {
 
@@ -8,13 +9,20 @@ class Homepage {
     private static pagefooter = '#page-footer';
     private static totalExpectedListElements: number = 44;
 
-    private static checkboxElement = '[href="/checkboxes"]'
+
+    private static checkboxElement = '[href="/checkboxes"]'    
+    private static dropdownElement = '[href="/dropdown"]'
     public checkboxHrefSelection: HrefSelectionComponent;
-    public checkboxSelection: DropdownComponent;
+    public checkboxSelection: CheckboxComponent;
+    public dropdownHrefSelection: HrefSelectionComponent;
+    public dropdownSelection: DropdownComponent
+    ;
 
     constructor(){
         this.checkboxHrefSelection = new HrefSelectionComponent;
-        this.checkboxSelection = new DropdownComponent;
+        this.dropdownHrefSelection = new HrefSelectionComponent;
+        this.checkboxSelection = new CheckboxComponent;
+        this.dropdownSelection = new DropdownComponent;
     }
 
     public headerElement(header:string){
@@ -48,6 +56,16 @@ class Homepage {
     public footerTextShouldEqual(footerText: string){
         this.footerText().should('equal', footerText);
     }
+
+    public checkChapter(chapter: string, partiaLink: string, id: number){
+        cy.get(`:nth-child(${chapter}  > a`).click()
+        cy.url().should('contain', `/${partiaLink}`)
+        cy.get('h3').should('exist')
+        cy.get(`[id=${id}]`).should('exist')
+      }
+
+
+
 // -------------------- CHECKBOX -----------------------------------
 
     // navigate to Checkbox page
@@ -59,7 +77,7 @@ class Homepage {
         this.checkboxSelection.validateLandingPage();
     }
 
-    // [4] peirazei na exun to idio onoma?
+    // [?] peirazei na exun to idio onoma?
     public validateCheckboxOptionsNotDisabled(){
         this.checkboxSelection.validateCheckboxOptionsNotDisabled();
     }
@@ -78,9 +96,32 @@ class Homepage {
     }
 
 
-    public allcheckboxesAreUnChecked(){
+    public allCheckboxesAreUnChecked(){
         this.checkboxSelection.checkboxIsUnChecked(1);
         this.checkboxSelection.checkboxIsUnChecked(3);
+    }
+    
+    //gia na mi ginei terastio auto to file de ginetai na ta kanw import apo ena allo page file?
+    // px checkbox.page.ts
+// -------------------- DROPDOWN -----------------------------------
+
+    // navigate to Checkbox page
+    public selectDropdownHref(){
+        this.dropdownHrefSelection.selectHrefElement(Homepage.dropdownElement);
+    }    
+
+    public validateLandingInDropdownPage(){
+        this.dropdownSelection.validateDropdownLandingPage();
+    }
+
+    public validateDropdownDefaultOptionsIsDisabled(){
+        this.dropdownSelection.validateDropdownDefaultOptionsIsDisabled();
+    }
+   
+    public validateAllDropwdownAvailableOptions(){
+        this.dropdownSelection.validateExpectedDropdownOptionsExist(1);
+        this.dropdownSelection.validateExpectedDropdownOptionsExist(2);
+        
     }
     
 }
