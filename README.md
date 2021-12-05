@@ -5,7 +5,7 @@ Repo dedicated to cypress testing
 Scope of testing: Functionality and appearance of website: https://the-internet.herokuapp.com/
  
 ----------------------------------------------
-|           Ιn order to execute tests        |
+|                 Prerequisites              |
 ----------------------------------------------
  
 [Install typescript]
@@ -47,3 +47,8 @@ $ tsc -init to creat tsconfig.json
   }
 }
 ```
+
+
+----------------------------------------------
+|           Ιn order to execute tests        |
+----------------------------------------------
