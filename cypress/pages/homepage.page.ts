@@ -58,7 +58,7 @@ class Homepage {
     }
 
     public checkChapter(chapter: string, partiaLink: string, id: number){
-        cy.get(`:nth-child(${chapter}  > a`).click()
+        cy.get(`:nth-child(${chapter} > a`).click()
         cy.url().should('contain', `/${partiaLink}`)
         cy.get('h3').should('exist')
         cy.get(`[id=${id}]`).should('exist')

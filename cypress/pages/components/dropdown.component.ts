@@ -34,7 +34,7 @@ class DropdownComponent{
     }
 
     public validateDropdownDefaultOptionsIsDisabled(){
-        cy.get('#dropdown [disabled]')
+        cy.get('[id="dropdown"] [disabled]')
         .contains('Please select an option')
         .should('be.selected')
         .should('be.disabled')

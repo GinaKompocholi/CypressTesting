@@ -61,20 +61,16 @@ describe('Navigate to HeroKuapp Homepage', () => {
       landingPageE.uncheckAllCheckboxes();
       landingPageE.allCheckboxesAreUnChecked();
     });
-
-  });
-
+}),
 
 describe('Testing Redirect section in HeroKuapp', () => {
 
-  const landingPageE = new Homepage();
   beforeEach(() => {
-    cy.visit('/')    
-    landingPageE.selectDropdownHref();
+    cy.visit('/')
   })
-
-  it('Redirect link url works well', () => {
-    landingPageE.checkChapter('redirector', 'redirect', 36);
+  const landingPageE = new Homepage();
+  it.only('Redirect link url works well', () => {
+    landingPageE.checkChapter('redirect', 'redirector', 36);
     cy.go('back')
   })
 
@@ -84,7 +80,7 @@ describe('Testing Dropdown section in HeroKuapp', () => {
 
   const landingPageE = new Homepage();
   beforeEach(() => {
-    cy.visit('/')    
+    cy.visit('/')
     //landingPageE.selectDropdownHref();
   })
 
@@ -94,6 +90,7 @@ describe('Testing Dropdown section in HeroKuapp', () => {
   });
 
   it('WHEN landing in dropwdown page: THEN dropdown elements appear correctly', () => {
+    landingPageE.selectDropdownHref();
     landingPageE.validateDropdownDefaultOptionsIsDisabled();
     landingPageE.validateAllDropwdownAvailableOptions();
   });
