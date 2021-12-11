@@ -38,15 +38,15 @@ describe('Testing Checkboxes section in HeroKuapp', () => {
     landingPageE.selectCheckboxHref();
   })
   const landingPageE = new Homepage();
-  const checkboxPageE = new CheckboxPage();
+  const checkboxPageE = new CheckboxPage('checkboxes', 'Checkboxes');
 
 
   it('WHEN landing in checkbox page: THEN checkbox landing page URL, header and footer is as expected', () => {
-    // PWS BORW NA KANW TA PARAKATW
-    // checkboxPageE.validateLandingInCheckboxPage();
-    // this.validateUrl();
-    // this.validateHeader();
-    // this.validateFooter();
+    // efera ta checks eksw alla etsi de glitwnw ton diplo kodika
+    checkboxPageE.validateUrl().should('contain', checkboxPageE.urlPart);
+    // ginontai ta checks mesa vasi twn timwn p perasa ston constructor
+    checkboxPageE.validateLandingPage()
+    
   })
 
   it('WHEN landing in checkbox page: THEN checkbox landing page displayes as expected', () => {
@@ -108,7 +108,7 @@ describe('Testing Checkboxes section in HeroKuapp', () => {
       cy.wrap($checkbox).should('not.be.checked')})
   });
 // *****************************************************************************************************
-  it.only('WHEN unchecking all checked checkbox elements: THEN all elements are unchecked', () => {
+  it('WHEN unchecking all checked checkbox elements: THEN all elements are unchecked', () => {
     checkboxPageE.uncheckAllCheckedCheckboxes();
     checkboxPageE.getCheckboxOptions().then(($checkbox) => {
       cy.wrap($checkbox).should('not.be.checked')})

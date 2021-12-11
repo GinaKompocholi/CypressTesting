@@ -1,21 +1,28 @@
-class Page {
+export class Page {
     
+    urlPart: string;
+    header: string;
+
+    constructor(urlPart: string, header: string){
+        this.urlPart = urlPart;
+        this.header = header;
+    }
+
     get getURL(){
         return cy.url()
     }
 
-    private validateUrl(){
-        cy.url().should('contain', '/checkboxes')
+    public validateUrl(){
+        return this.getURL
     }
 
-
-    public getHeader(header: string){
-        return cy.get(header)
+    get getHeader(){
+        return cy.get('h3')
     }
 
-    private validateHeader(){
-        cy.get('h3').should('exist')
-        cy.contains('Checkboxes')
+    public validateHeader(){
+        this.getHeader.should('exist')
+        cy.contains(this.header)
     }
 
     get getFooter(){
@@ -23,14 +30,14 @@ class Page {
     }
 
     private validateFooter(){
-        cy.get('#page-footer')
-        .should('exist')
-        cy.contains('Powered by ')
+        this.getFooter.should('exist')
+        cy.contains('Powered by Elemental Selenium')
     }
 
-    public validateLandingInCheckboxPage(){
-        this.validateUrl();
+    public validateLandingPage(){
+        //this.validateUrl(); //exw ferei ta checks mesa sto spec file
         this.validateHeader();
         this.validateFooter();
     }
 }
+

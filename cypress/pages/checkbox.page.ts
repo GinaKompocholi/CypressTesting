@@ -1,10 +1,12 @@
 import CheckboxComponent from "./components/checkbox.component";
+import { Page } from "./page.page";
 
-class CheckboxPage {
+export class CheckboxPage extends Page{
     
     public checkboxComponent: CheckboxComponent;
 
-    constructor(){
+    constructor(urlPart: string, header: string){
+        super(urlPart, header);
         this.checkboxComponent = new CheckboxComponent;
     }
 
