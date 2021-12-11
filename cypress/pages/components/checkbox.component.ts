@@ -1,6 +1,8 @@
 class CheckboxComponent{
 
-    
+    //setter/mutator method updates the property’s value
+    //getter/accessor method returns the value of the property’s value
+
     get getCheckboxForm(){
         return cy.get('form[id="checkboxes"]')
     }

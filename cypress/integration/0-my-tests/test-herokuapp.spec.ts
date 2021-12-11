@@ -118,23 +118,55 @@ describe('Testing Checkboxes section in HeroKuapp', () => {
 describe('Testing Dropdown section in HeroKuapp', () => {
 
   const landingPageE = new Homepage();
-  const dropdownPageeE = new DropdownPage();
+  const dropdownPageE = new DropdownPage('dropdown', 'Dropdown List');
   beforeEach(() => {
     cy.visit('/')
-    //landingPageE.selectDropdownHref();
+    landingPageE.selectDropdownHref();
   });
 
-  it('WHEN selecting dropdown list element: THEN dropdown landing page is as expected', () => {
+  it('WHEN landing in dropdown page: THEN dropdown landing page URL, header and footer is as expected', () => {
+
     landingPageE.selectDropdownHref();
-    dropdownPageeE.validateLandingInDropdownPage();
+    // efera ta checks eksw alla etsi de glitwnw ton diplo kodika
+    dropdownPageE.validateUrl().should('contain', dropdownPageE.urlPart);
+    // ginontai ta checks mesa vasi twn timwn p perasa ston constructor
+    dropdownPageE.validateLandingPage()
   });
 
-  it('WHEN landing in dropwdown page: THEN dropdown elements appear correctly', () => {
-    landingPageE.selectDropdownHref();
-    dropdownPageeE.validateDropdownDefaultOptionsIsDisabled();
-    dropdownPageeE.validateAllDropwdownAvailableOptions();
+  it('WHEN landing in dropdown page: THEN dropdown landing page displayes as expected', () => {
+    dropdownPageE.getDropdownForm().should('exist');
+    dropdownPageE.getDropdownOptions().then(($el)  => 
+    { 
+      for(let index=0; index<$el.length; index++){
+        if (index == 0){
+          // ti allo borousa na valw ektos tou contains?
+          // de doulepse me have value
+          cy.wrap($el)
+          .contains('Please select an option')
+          .should('be.selected')
+          .should('exist')
+          .should('be.disabled')
+        }
+        else{
+          cy.wrap($el)
+          .contains(`Option ${index}`)
+          // to apo katw fernei value = 1
+          //.should('have.value', `Option ${index}`)
+          .should('exist')
+          .should('not.be.selected')
+          .should('not.be.disabled')
+        }
+      }})    
   });
-}),
+
+
+  it.only('WHEN selecting a dropdown element: THEN dropdown elements gets selected', () => {
+    dropdownPageE.selectDropdownElement(1)
+    dropdownPageE.getDropdownElement(1)
+    });
+  }),
+  
+  
 
 describe('Testing Redirect section in HeroKuapp', () => {
 

@@ -1,29 +1,33 @@
-
 import DropdownComponent from "./components/dropdown.component";
+import { Page } from "./page.page";
 
-class DropdownPage{
 
-    public dropdownSelection: DropdownComponent;
+export class DropdownPage extends Page{
 
-    constructor(){
-        this.dropdownSelection = new DropdownComponent;
-        //this.checkboxPage = new checkboxPage;
+    public dropdownComponent: DropdownComponent;
+
+    constructor(urlPart: string, header: string){
+        super(urlPart, header);
+        this.dropdownComponent = new DropdownComponent;
     }
 
-    public validateLandingInDropdownPage(){
-        this.dropdownSelection.validateDropdownLandingPage();
+    // [?] Prepei na exun alla onomata oi 2 funcs?
+    public getDropdownForm(){
+        return this.dropdownComponent.getDropdownForm;
     }
 
-    public validateDropdownDefaultOptionsIsDisabled(){
-        this.dropdownSelection.validateDropdownDefaultOptionsIsDisabled();
-    }
-   
-    public validateAllDropwdownAvailableOptions(){
-        this.dropdownSelection.validateExpectedDropdownOptionsExist(1);
-        this.dropdownSelection.validateExpectedDropdownOptionsExist(2);
-        
+    // [?] Prepei na exun alla onomata oi 2 funcs?
+    public getDropdownOptions(){
+        return this.dropdownComponent.getDropdownOptions;
     }
 
+    public selectDropdownElement(dropdownLocator: number | Cypress.Chainable){
+        return this.dropdownComponent.selectDropdownElement(dropdownLocator);
+    }
+
+    public getDropdownElement(element: number){
+        return this.dropdownComponent.getDropdownElement(element);
+    }
 }
 
 export default DropdownPage
