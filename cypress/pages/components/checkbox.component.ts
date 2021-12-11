@@ -1,62 +1,50 @@
+/* mesa sto component de thelw tests
+cy.contains('Powered by ') px auto k to should exist
+to component exei ta xaraktiristika
+
+ti borw na kanw sti checkbox page?
+posa checkboxes exw, ta checkarw, uncheck
+auta einai tou component
+1. 
+checkboxPage.page k kalw methodo px select checkbox
+2. 'h
+yparxei sa methodos sto checkboxPage.page k kalei ti check methodo tou component
+
+-----
+ta test actions prp na pane sto spec
+ta standard checks
+- pare footer
+- pare header
+- pare url
+na klironomountai apo tin Page
+(general page)
+px Homepage.page extends Page
+*/
 class CheckboxComponent{
 
-    private validateUrl(){
-        cy.url().should('contain', '/checkboxes')
+    
+    get getCheckboxForm(){
+        return cy.get('form[id="checkboxes"]')
     }
 
-    private validateHeader(){
-        cy.get('h3').should('exist')
-        cy.contains('Checkboxes')
-    }
-
-    private validateFooter(){
-        cy.get('#page-footer').should('exist')
-        cy.contains('Powered by ')
-    }
-
-    private validateCheckboxForm(){
-        cy.get('form[id="checkboxes"]').should('exist')
-    }
-
-    private validateCheckboxOptions(){
-        cy.get('form[id="checkboxes"] input')
-        .should('have.length', 2)
-        // [5] pws vriskw ola ta checkbox options oti exun text checkbox?
-        // auto to locator den isxiei form[id="checkboxes"] input
-    }
-
-    public validateLandingPage(){
-        this.validateUrl();
-        this.validateHeader();
-        this.validateFooter();
-        this.validateCheckboxForm();
-        this.validateCheckboxOptions();
+    get getCheckboxOptions(){
+        return cy.get('[type="checkbox"]')
     }
 
     public getCheckboxElement(checkboxLocator: number | Cypress.Chainable){
         return cy.get(`#checkboxes > :nth-child(${checkboxLocator})`);
     }
-
-    public validateCheckboxOptionsNotDisabled(){
-        this.getCheckboxElement(1).not('[disabled]')
-        this.getCheckboxElement(3).not('[disabled]')
-    }
     
-    public checkCheckboxElement(dropdownLocator: number | Cypress.Chainable){
+    public findAndCheckCheckboxElement(dropdownLocator: number | Cypress.Chainable){
         this.getCheckboxElement(dropdownLocator).check()
     }
-
-    public checkboxIsChecked(dropdownLocator: number | Cypress.Chainable){
-        this.getCheckboxElement(dropdownLocator).should('be.checked')
+    public checkCheckboxElement(checkboxElement: Cypress.Chainable){
+        checkboxElement.check()
     }
 
-    public uncheckCheckbox(dropdownLocator: number | Cypress.Chainable){
-        this.getCheckboxElement(dropdownLocator).uncheck()
+    public uncheckCheckbox(dropdownLocator){
+        dropdownLocator.uncheck
     }
-
-    public checkboxIsUnChecked(dropdownLocator: number | Cypress.Chainable){
-        this.getCheckboxElement(dropdownLocator).should('not.be.checked')
-    }    
 }
 
 export default CheckboxComponent
