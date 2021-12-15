@@ -11,20 +11,15 @@ export class CheckboxPage extends Page{
     }
 
     public checkAllCheckboxes(){
-        return this.getCheckboxOptions().then(($checkbox) => {
+        return this.checkboxComponent.getCheckboxOptions.then(($checkbox) => {
             this.checkboxComponent.checkCheckboxElement(cy.wrap($checkbox))
         })
     }
 
     public uncheckAllCheckboxes(){
-        return this.getCheckboxOptions().then(($checkbox) => {
+        return this.checkboxComponent.getCheckboxOptions.then(($checkbox) => {
             this.checkboxComponent.uncheckCheckboxElement(cy.wrap($checkbox))
         })
     }
-
-    public getCheckboxOptions(){
-        return this.checkboxComponent.getCheckboxOptions
-    }
-
 }
 export default CheckboxPage
