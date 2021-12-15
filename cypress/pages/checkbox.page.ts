@@ -20,7 +20,7 @@ export class CheckboxPage extends Page{
         return this.checkboxComponent.findAndCheckCheckboxElement(option);
     }   
 
-    public checkboxElement(checkboxLocator: number | Cypress.Chainable){
+    public checkboxElement(checkboxLocator: number){
         return this.checkboxComponent.getCheckboxElement(checkboxLocator);
     }
 
@@ -48,15 +48,6 @@ export class CheckboxPage extends Page{
 
     public getCheckboxOptions(){
         return this.checkboxComponent.getCheckboxOptions
-    }
-
-
-    // borw na trexw to foreach exontas piasei ta dropdown options gia na einai dinamiko
-    // PREPEI NA TREXW TO FOREACH KAI NA KANW TO VALIDATION MESA EDW ANTI GIA TO PAGE FILE ??
-    // AFU EINAI .not('[disabled]') TO ACTION DE PREPEI NA BEI STO SPEC ?
-    public validateCheckboxOptionsNotDisabled(){
-        this.checkboxComponent.validateCheckboxOptionsNotDisabled(); 
-        // mesa sto component eixe auto i func => this.getCheckboxElement(1).not('[disabled]')
     }
 
 }

@@ -11,14 +11,21 @@ class CheckboxComponent{
         return cy.get('[type="checkbox"]')
     }
 
-    public getCheckboxElement(checkboxLocator: number | Cypress.Chainable){
+//select checkbox by index (var:number)
+// this.getCheckboxElement => array
+// :eq(num_variable)
+
+
+
+    public getCheckboxElement(checkboxLocator: number){
         return cy.get(`#checkboxes > :nth-child(${checkboxLocator})`);
     }
 
     // get and .check()
-    public findAndCheckCheckboxElement(dropdownLocator: number | Cypress.Chainable){
-        this.getCheckboxElement(dropdownLocator).check()
+    public findAndCheckCheckboxElement(checkboxLocator: number){
+        this.getCheckboxElement(checkboxLocator).check()
     }
+
     // just .check()
     public checkCheckboxElement(checkboxElement: Cypress.Chainable){
         checkboxElement.check()
