@@ -21,8 +21,8 @@ describe('Testing Checkboxes section in HeroKuapp', () => {
   it('WHEN landing in checkbox page: THEN checkbox landing page appears as expected', () => {
     checkboxComponent.getCheckboxElement(3).should('be.checked');
     checkboxComponent.getCheckboxForm.should('exist');
-    checkboxPageE.getCheckboxOptions().should('have.length', 2)
-    checkboxPageE.getCheckboxOptions().then((el)  => 
+    checkboxComponent.getCheckboxOptions.should('have.length', 2)
+    checkboxComponent.getCheckboxOptions.then((el)  => 
     {
       cy.wrap(el).should('not.contain', 'Disabled').should('not.be.disabled')
     })
@@ -34,20 +34,20 @@ describe('Testing Checkboxes section in HeroKuapp', () => {
     checkboxComponent.getCheckboxElement(1).should('be.checked');
   });
   
-  it.only('WHEN checking all checkbox elements: THEN all checkbox elements are checked', () => {
+  it('WHEN checking all checkbox elements: THEN all checkbox elements are checked', () => {
     checkboxPageE.checkAllCheckboxes();
-    checkboxPageE.getCheckboxOptions().then(($checkbox) => {
+    checkboxComponent.getCheckboxOptions.then(($checkbox) => {
       cy.wrap($checkbox).should('be.checked')})
-    checkboxPageE.getCheckboxOptions().then(($checkbox) =>
-    { cy.wrap($checkbox).should('have.attr', 'checked')})
+    checkboxComponent.getCheckboxOptions.then(($checkbox) => {
+      cy.wrap($checkbox).should('have.attr', 'checked')})
   });
   
   it('WHEN unchecking all checked checkbox elements: THEN all elements are unchecked', () => {
     checkboxPageE.uncheckAllCheckboxes();
-    checkboxPageE.getCheckboxOptions().then(($checkbox) => {
+    checkboxComponent.getCheckboxOptions.then(($checkbox) => {
       cy.wrap($checkbox).should('not.be.checked')})
-    checkboxPageE.getCheckboxOptions().then(($checkbox) =>
-      { cy.wrap($checkbox).should('not.have.attr', 'checked')})
+    checkboxComponent.getCheckboxOptions.then(($checkbox) => {
+      cy.wrap($checkbox).should('not.have.attr', 'checked')})
   });
 
 });
