@@ -10,40 +10,16 @@ export class CheckboxPage extends Page{
         this.checkboxComponent = new CheckboxComponent;
     }
 
-    // .check()
-    public checkOption(option: number){
-        return this.checkboxComponent.checkCheckboxElement(this.checkboxElement(option));
-    }   
-
-    // get and .check()
-    public findAndCheckElement(option: number){
-        return this.checkboxComponent.findAndCheckCheckboxElement(option);
-    }   
-
-    public checkboxElement(checkboxLocator: number){
-        return this.checkboxComponent.getCheckboxElement(checkboxLocator);
+    public checkAllCheckboxes(){
+        return this.getCheckboxOptions().then(($checkbox) => {
+            this.checkboxComponent.checkCheckboxElement(cy.wrap($checkbox))
+        })
     }
 
     public uncheckAllCheckboxes(){
-        // return this.getCheckboxOptions().then((element) => {
-        //     for(let index=0; index<element.length; index++){
-        //         this.checkboxComponent.uncheckCheckbox(cy.wrap(element)); }
-        // }) // [?] Giati de dulevei auto?
-
         return this.getCheckboxOptions().then(($checkbox) => {
-            cy.wrap($checkbox).uncheck()
+            this.checkboxComponent.uncheckCheckboxElement(cy.wrap($checkbox))
         })
-    }
-
-    public uncheckAllCheckedCheckboxes(){
-        return this.getCheckboxOptions().then(($checkbox) => {
-            if($checkbox.is(':checked')){
-                cy.wrap($checkbox).uncheck()}
-        })
-    }
-
-    public getCheckboxForm(){
-        return this.checkboxComponent.getCheckboxForm
     }
 
     public getCheckboxOptions(){

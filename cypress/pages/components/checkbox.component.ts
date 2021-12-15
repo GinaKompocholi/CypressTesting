@@ -1,8 +1,5 @@
 class CheckboxComponent{
 
-    //setter/mutator method updates the property’s value
-    //getter/accessor method returns the value of the property’s value
-
     get getCheckboxForm(){
         return cy.get('form[id="checkboxes"]')
     }
@@ -15,20 +12,16 @@ class CheckboxComponent{
 // this.getCheckboxElement => array
 // :eq(num_variable)
 
-
-
-    public getCheckboxElement(checkboxLocator: number){
+    public getCheckboxElement(checkboxLocator: number | Cypress.Chainable){
         return cy.get(`#checkboxes > :nth-child(${checkboxLocator})`);
     }
 
-    // get and .check()
-    public findAndCheckCheckboxElement(checkboxLocator: number){
-        this.getCheckboxElement(checkboxLocator).check()
+    public checkCheckboxElement(checkboxElement: number | Cypress.Chainable){
+        this.getCheckboxElement(checkboxElement).check()
     }
 
-    // just .check()
-    public checkCheckboxElement(checkboxElement: Cypress.Chainable){
-        checkboxElement.check()
+    public uncheckCheckboxElement(checkboxElement: number | Cypress.Chainable){
+        this.getCheckboxElement(checkboxElement).uncheck()
     }
 }
 
