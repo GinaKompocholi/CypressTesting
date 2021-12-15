@@ -8,6 +8,7 @@ export class Page {
         this.header = header;
     }
 
+    // tha eixe nohma na exw tin public an tha ekana action sto element tis getter
     get getURL(){
         return cy.url()
     }
