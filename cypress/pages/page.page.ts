@@ -8,13 +8,12 @@ export class Page {
         this.header = header;
     }
 
-    // tha eixe nohma na exw tin public an tha ekana action sto element tis getter
     get getURL(){
         return cy.url()
     }
 
     public validateUrl(){
-        return this.getURL
+        return this.getURL.should('contain', this.urlPart);
     }
 
     get getHeader(){
@@ -24,6 +23,7 @@ export class Page {
     public validateHeader(){
         this.getHeader.should('exist')
         cy.contains(this.header)
+        return
     }
 
     get getFooter(){
@@ -33,10 +33,11 @@ export class Page {
     private validateFooter(){
         this.getFooter.should('exist')
         cy.contains('Powered by Elemental Selenium')
+        return
     }
 
     public validateLandingPage(){
-        //this.validateUrl(); //exw ferei ta checks mesa sto spec file
+        this.validateUrl();
         this.validateHeader();
         this.validateFooter();
     }
