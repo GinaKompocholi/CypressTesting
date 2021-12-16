@@ -15,14 +15,10 @@ class Homepage {
 
     public checkboxHrefSelection: HrefSelectionComponent;
     public dropdownHrefSelection: HrefSelectionComponent;
-    public checkboxComponent: CheckboxComponent;
-    public dropdownSelection: DropdownComponent;
 
     constructor(){
         this.checkboxHrefSelection = new HrefSelectionComponent;
-        this.dropdownHrefSelection = new HrefSelectionComponent;
-        this.checkboxComponent = new CheckboxComponent;
-        this.dropdownSelection = new DropdownComponent;
+        this.dropdownHrefSelection = new HrefSelectionComponent;\
     }
 
     public headerElement(header:string){
