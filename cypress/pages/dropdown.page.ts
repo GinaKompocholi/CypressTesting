@@ -11,17 +11,7 @@ export class DropdownPage extends Page{
         this.dropdownComponent = new DropdownComponent;
     }
 
-    // [?] Prepei na exun alla onomata oi 2 funcs?
-    public getDropdownForm(){
-        return this.dropdownComponent.getDropdownForm;
-    }
-
-    // [?] Prepei na exun alla onomata oi 2 funcs?
-    public getDropdownOptions(){
-        return this.dropdownComponent.getDropdownOptions;
-    }
-
-    public selectDropdownElement(dropdownLocator: number | Cypress.Chainable){
+    public selectDropdownElement(dropdownLocator: number){
         return this.dropdownComponent.selectDropdownElement(dropdownLocator);
     }
 
