@@ -1,6 +1,4 @@
 import HrefSelectionComponent from "./components/hrefSelection.component";
-import CheckboxComponent from "./components/checkbox.component";
-import DropdownComponent from "./components/dropdown.component"
 
 class Homepage {
 
@@ -18,7 +16,7 @@ class Homepage {
 
     constructor(){
         this.checkboxHrefSelection = new HrefSelectionComponent;
-        this.dropdownHrefSelection = new HrefSelectionComponent;\
+        this.dropdownHrefSelection = new HrefSelectionComponent;
     }
 
     public headerElement(header:string){
