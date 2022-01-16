@@ -21,9 +21,10 @@ describe('Testing Redirect section in HeroKuapp', () => {
     cy.url().should('contain', 'status_codes')
   })
 
-  it('WHEN returning to Redirect link: THEN redirect page is displayed as expected', () => {
-    cy.go('back')
-    redirectPageE.validateLandingPage()
-  })
-  
+  it.only('WHEN getting Redirect link:', () => {
+    cy.visit('/')
+    landingPageE.selectRedirectHref();
+    //redirectComponent.clickRedirectURL()
+    redirectPageE.getStatusCodeListElementsHref()
+  })  
 });
